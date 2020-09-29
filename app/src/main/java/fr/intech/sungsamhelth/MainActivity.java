@@ -9,7 +9,7 @@ import android.util.Log;
 import fr.intech.sungsamhelth.model.GravitySensor;
 
 public class MainActivity extends AppCompatActivity {
-
+    int NombrePas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
