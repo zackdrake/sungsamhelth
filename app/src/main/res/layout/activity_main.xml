@@ -25,5 +25,56 @@
         app:layout_constraintRight_toLeftOf="parent"
         android:id="@+id/NBPas"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="verre d'eau"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/NBPas"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:id="@+id/waterGlass"/>
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="35dp"
+        android:src="@drawable/water"
+        app:layout_constraintBottom_toBottomOf="@id/NBPas"
+        app:layout_constraintRight_toLeftOf="@id/waterGlass"
+        app:layout_constraintTop_toBottomOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@id/waterGlass"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:id="@+id/NBGlass"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:text="o"
+        app:layout_constraintLeft_toRightOf="@id/waterGlass"
+        app:layout_constraintTop_toBottomOf="@id/waterGlass"
+        android:id="@+id/glassButtonLess"/>
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:text="i"
+        app:layout_constraintTop_toBottomOf="@id/waterGlass"
+        app:layout_constraintLeft_toRightOf="@id/glassButtonLess"
+        android:id="@+id/glassButtonMore"/>
+   <ImageButton
+       android:adjustViewBounds="true"
+       android:layout_width="37dp"
+       android:layout_height="37dp"
+       android:scaleType="centerCrop"
+       android:src="@drawable/info"
+       app:layout_constraintLeft_toRightOf="@id/waterGlass"
+       app:layout_constraintBottom_toTopOf="@id/glassButtonMore"
+       android:id="@+id/glassButtonInfo"
+       />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
