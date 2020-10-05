@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             isCounterSensorPresent = false;
         }
 
-        NombrePas = findViewById(R.id.textViewStepCounter);
         numberGlass = findViewById(R.id.NBGlass);
         moreGlass = findViewById(R.id.glassButtonMore);
         lessGlass = findViewById(R.id.glassButtonLess);
