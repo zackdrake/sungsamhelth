@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-
+        //détecte si le téléphone posséde le sensor nécessaire pour compter les pas
         if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null) {
             nStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
             isCounterSensorPresent = true;
@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public void onSensorChanged(final SensorEvent event) {
+        //met à jour le nb de pas
         if (event.sensor == nStepCounter) {
             stepCount = (int) event.values[0];
             textViewStepCounter.setText(String.valueOf(stepCount));
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onResume() {
         super.onResume();
+        //écoute le sensor
         if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null) {
             sensorManager.registerListener(this, nStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -150,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onPause() {
         super.onPause();
+        //stop l'écoute du sensor
         if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null) {
             sensorManager.unregisterListener(this, nStepCounter);
         }
