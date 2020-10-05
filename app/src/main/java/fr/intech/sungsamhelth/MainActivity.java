@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     int steps;
     CharSequence text = "Il est recommendé de boire 8 verres d'eau par jour.";
     int duration = Toast.LENGTH_LONG;
+    int dayOFTheMonth = Calendar.DAY_OF_MONTH;
 
 
 
@@ -42,17 +43,33 @@ public class MainActivity extends AppCompatActivity {
         moreGlass = findViewById(R.id.glassButtonMore);
         lessGlass = findViewById(R.id.glassButtonLess);
         infoGlass = findViewById(R.id.glassButtonInfo);
+        SharedPreferences sharedPref = getSharedPreferences("date", 0);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String currentDate = sdf.format(new Date());
+        if (sharedPref.getString("LAST_LAUNCH_DATE","nodate").contains(currentDate)){
+            glass = getPreferences(MODE_PRIVATE).getInt("glassNumber",0);
+            numberGlass.setText(String.valueOf(glass));
+        }
+        else
+        {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("LAST_LAUNCH_DATE", currentDate);
+            editor.commit();
 
+        }
 
         moreGlass.setOnClickListener(v -> {
             glass++;
             numberGlass.setText(String.valueOf(glass));
+            getPreferences(MODE_PRIVATE).edit().putInt("glassNumber",glass).commit();
         });
 
         lessGlass.setOnClickListener(v -> {
             if (glass > 0) {
                 glass--;
                 numberGlass.setText(String.valueOf(glass));
+                getPreferences(MODE_PRIVATE).edit().putInt("glassNumber",glass).commit();
+
             }
         });
 
