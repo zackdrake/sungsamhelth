@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     Context context = getApplicationContext();
     CharSequence text = "Hello toast!";
     int duration = Toast.LENGTH_SHORT;
+    private TextView textViewStepCounter;
+    private SensorManager sensorManager;
+    private boolean isCounterSensorPresent;
 
     Toast toast = Toast.makeText(context, text, duration);
 
