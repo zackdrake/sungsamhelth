@@ -10,83 +10,112 @@
         android:id="@+id/btn_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="68dp"
         android:text="Activity Permission"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textPas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Nombre de pas"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/textPas"/>
+        app:layout_constraintTop_toBottomOf="@id/btn_location" />
 
     <TextView
+        android:id="@+id/NBPas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        app:layout_constraintTop_toBottomOf="@id/textPas"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
-        android:id="@+id/NBPas"/>
+        app:layout_constraintTop_toBottomOf="@id/textPas" />
 
     <TextView
+        android:id="@+id/waterGlass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="verre d'eau"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/NBPas"
-        app:layout_constraintTop_toBottomOf="parent"
-        android:id="@+id/waterGlass"/>
+        app:layout_constraintTop_toBottomOf="@id/NBPas"
+        app:layout_constraintVertical_bias="0.236" />
 
     <ImageView
-        android:layout_width="48dp"
-        android:layout_height="35dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         android:src="@drawable/water"
-        app:layout_constraintBottom_toBottomOf="@id/NBPas"
-        app:layout_constraintRight_toLeftOf="@id/waterGlass"
-        app:layout_constraintTop_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@id/waterGlass"
+        app:layout_constraintRight_toLeftOf="@id/waterGlass" />
+
     <TextView
+        android:id="@+id/NBGlass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        app:layout_constraintTop_toBottomOf="@id/waterGlass"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
-        android:id="@+id/NBGlass"/>
+        app:layout_constraintTop_toBottomOf="@id/waterGlass" />
 
     <ImageButton
+        android:id="@+id/glassButtonLess"
         android:layout_width="37dp"
         android:layout_height="37dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/less"
-        android:scaleType="centerCrop"
         app:layout_constraintLeft_toRightOf="@id/waterGlass"
-        app:layout_constraintTop_toBottomOf="@id/waterGlass"
-        android:id="@+id/glassButtonLess"/>
+        app:layout_constraintTop_toBottomOf="@id/waterGlass" />
+
     <ImageButton
+        android:id="@+id/glassButtonMore"
         android:layout_width="37dp"
         android:layout_height="37dp"
-        android:src="@drawable/more"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toBottomOf="@id/waterGlass"
+        android:src="@drawable/more"
         app:layout_constraintLeft_toRightOf="@id/glassButtonLess"
-        android:id="@+id/glassButtonMore"/>
-   <ImageButton
-       android:adjustViewBounds="true"
-       android:layout_width="37dp"
-       android:layout_height="37dp"
-       android:scaleType="centerCrop"
-       android:src="@drawable/info"
-       app:layout_constraintLeft_toRightOf="@id/waterGlass"
-       app:layout_constraintBottom_toTopOf="@id/glassButtonMore"
-       android:id="@+id/glassButtonInfo"
-       />
+        app:layout_constraintTop_toBottomOf="@id/waterGlass" />
+
+    <ImageButton
+        android:id="@+id/glassButtonInfo"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/info"
+        app:layout_constraintBottom_toTopOf="@id/glassButtonMore"
+        app:layout_constraintLeft_toRightOf="@id/waterGlass" />
+
+    <ImageView
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:src="@drawable/sommeil"
+        app:layout_constraintBottom_toBottomOf="@id/sleeping"
+        app:layout_constraintRight_toLeftOf="@id/sleeping"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vous avez dormi "
+        app:layout_constraintTop_toBottomOf="@id/waterGlass"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:id="@+id/sleeping"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="exemple : 7h30"
+        android:imeOptions="actionDone"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@id/sleeping"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:id="@+id/sleepingTime"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
