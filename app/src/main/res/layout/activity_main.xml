@@ -51,17 +51,19 @@
         app:layout_constraintRight_toLeftOf="parent"
         android:id="@+id/NBGlass"/>
 
-    <Button
+    <ImageButton
         android:layout_width="37dp"
         android:layout_height="37dp"
-        android:text="o"
+        android:src="@drawable/less"
+        android:scaleType="centerCrop"
         app:layout_constraintLeft_toRightOf="@id/waterGlass"
         app:layout_constraintTop_toBottomOf="@id/waterGlass"
         android:id="@+id/glassButtonLess"/>
-    <Button
+    <ImageButton
         android:layout_width="37dp"
         android:layout_height="37dp"
-        android:text="i"
+        android:src="@drawable/more"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@id/waterGlass"
         app:layout_constraintLeft_toRightOf="@id/glassButtonLess"
         android:id="@+id/glassButtonMore"/>
