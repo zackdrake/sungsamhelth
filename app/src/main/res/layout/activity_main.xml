@@ -27,13 +27,12 @@
         app:layout_constraintTop_toBottomOf="@id/btn_location" />
 
     <TextView
-        android:id="@+id/NBPas"
+        android:id="@id/textViewStepCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textPas" />
+        app:layout_constraintRight_toLeftOf="parent"/>
 
     <TextView
         android:id="@+id/waterGlass"
@@ -43,14 +42,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/NBPas"
+        app:layout_constraintBottom_toBottomOf="@id/textViewStepCounter"
         app:layout_constraintVertical_bias="0.236" />
 
     <ImageView
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:src="@drawable/water"
-        app:layout_constraintBottom_toBottomOf="@id/waterGlass"
+        app:layout_constraintBottom_toBottomOf="@id/textViewStepCounter"
         app:layout_constraintRight_toLeftOf="@id/waterGlass" />
 
     <TextView

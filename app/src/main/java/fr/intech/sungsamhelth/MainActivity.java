@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -22,7 +24,7 @@ import java.util.Date;
 
 import fr.intech.sungsamhelth.model.GravitySensor;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SensorEventListener{
     private TextView NombrePas;
     private TextView numberGlass;
     private ImageButton moreGlass;
@@ -38,14 +40,33 @@ public class MainActivity extends AppCompatActivity {
     int dayOFTheMonth = Calendar.DAY_OF_MONTH;
     private TextView textViewStepCounter;
     private SensorManager sensorManager;
+    private Sensor nStepCounter;
     private boolean isCounterSensorPresent;
+    int stepCount = 0;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        NombrePas = findViewById(R.id.NBPas);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        textViewStepCounter = findViewById(R.id.textViewStepCounter);
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null)
+        {
+            nStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+            isCounterSensorPresent = true;
+        }else
+        {
+            textViewStepCounter.setText("Step Counter isn't present on your phone");
+            isCounterSensorPresent = false;
+        }
+
         numberGlass = findViewById(R.id.NBGlass);
         moreGlass = findViewById(R.id.glassButtonMore);
         lessGlass = findViewById(R.id.glassButtonLess);
@@ -98,9 +119,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSensorChanged(final SensorEvent event) {
-        steps = (int) event.values[0];
-        NombrePas.setText(String.valueOf(steps));
-        Log.i("step", "" + steps);
+        if(event.sensor == nStepCounter){
+            stepCount = (int) event.values[0];
+            textViewStepCounter.setText(String.valueOf(stepCount));
+        }
     }
 
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!=null){
+            sensorManager.registerListener(this, nStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!=null){
+            sensorManager.unregisterListener(this, nStepCounter);
+        }
+    }
 }
